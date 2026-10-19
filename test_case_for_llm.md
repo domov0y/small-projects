@@ -188,73 +188,73 @@ launchpad/
 ### 7.1. entities
 Справочник типов объектов (ОС и сервисы).
 
-id
-name
-kind — os или service
-description
-created_at
-updated_at
+- id
+- name
+- kind — os или service
+- description
+- created_at
+- updated_at
 
 Начальные записи: Linux (os), Nginx (service).
 ### 7.2. hosts
 
-id
-entity_id — ссылка на сущность типа os
-name
-address
-ssh_user
-ssh_port (по умолчанию 22)
-description
-created_at
-updated_at
+- id
+- entity_id — ссылка на сущность типа os
+- name
+- address
+- ssh_user
+- ssh_port (по умолчанию 22)
+- description
+- created_at
+- updated_at
 
 Пароли SSH в базе не хранятся. Используется аутентификация по ключу.
 ### 7.3. host_services
 
-id
-host_id
-entity_id — ссылка на сущность типа service
-display_name (необязательно)
-port (необязательно)
-created_at
-updated_at
+- id
+- host_id
+- entity_id — ссылка на сущность типа service
+- display_name (необязательно)
+- port (необязательно)
+- created_at
+- updated_at
 
 ### 7.4. commands
 
-id
-name — название на кнопке
-script_key — ключ из белого списка
-arguments_json — дополнительные аргументы (JSON)
-description
-enabled
-created_at
-updated_at
+- id
+- name — название на кнопке
+- script_key — ключ из белого списка
+- arguments_json — дополнительные аргументы (JSON)
+- description
+- enabled
+- created_at
+- updated_at
 
 script_key — логический ключ, а не путь к файлу.
 ### 7.5. entity_commands
 
-entity_id
-command_id
+- entity_id
+- command_id
 
 ### 7.6. host_commands
 
-host_id
-command_id
+- host_id
+- command_id
 
 ### 7.7. jobs
 
-id
-host_id
-host_service_id (nullable)
-command_id
-status — queued, running, succeeded, failed
-arguments_json
-created_at
-started_at
-finished_at
-exit_code
-log_path
-error_message
+- id
+- host_id
+- host_service_id (nullable)
+- command_id
+- status — queued, running, succeeded, failed
+- arguments_json
+- created_at
+- started_at
+- finished_at
+- exit_code
+- log_path
+- error_message
 
 Правило удаления хоста: запрещать удаление, если есть связанные задания (историю сохраняем).
 
@@ -287,53 +287,53 @@ API может быть как REST-подобным, так и action-based.
 ```
 
 ### 8.2. Обязательные действия
-Хосты
+#### Хосты
 
-host.list
-host.get
-host.create
-host.update
-host.delete
-host.services
-host.commands
-host.jobs
+- host.list
+- host.get
+- host.create
+- host.update
+- host.delete
+- host.services
+- host.commands
+- host.jobs
 
-Сущности
+#### Сущности
 
-entity.list
-entity.get
-entity.create
-entity.update
-entity.delete
+- entity.list
+- entity.get
+- entity.create
+- entity.update
+- entity.delete
 
-Сервисы
+#### Сервисы
 
-service.assign          # назначить сервис хосту
-service.update
-service.remove
+- service.assign          # назначить сервис хосту
+- service.update
+- service.remove
 
-Команды
+#### Команды
 
-command.list
-command.get
-command.create
-command.update
-command.delete
-command.assign_to_entity
-command.remove_from_entity
-command.assign_to_host
-command.remove_from_host
+- command.list
+- command.get
+- command.create
+- command.update
+- command.delete
+- command.assign_to_entity
+- command.remove_from_entity
+- command.assign_to_host
+- command.remove_from_host
 
-Задания
+#### Задания
 
-job.create              # поставить задание в очередь
-job.get
-job.list
-job.log                 # содержимое лога
+- job.create              # поставить задание в очередь
+- job.get
+- job.list
+- job.log                 # содержимое лога
 
-Служебные
+#### Служебные
 
-health
+-health
 
 Все изменяющие операции должны проверять входные данные на сервере.
 
