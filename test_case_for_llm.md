@@ -125,8 +125,8 @@ PHP-FPM и worker запускать от пользователя launchpad
 
 
 ## 6. Структура проекта
-```
-textlaunchpad/
+```text
+launchpad/
 ├── public/                     # единственный web-root
 │   ├── index.php
 │   ├── api.php                 # единая точка входа API
